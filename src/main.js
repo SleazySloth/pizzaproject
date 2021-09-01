@@ -1,4 +1,40 @@
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createApp, h } from 'vue'
+import {
+  Avatar,
+  Layout,
+  Button,
+  Breadcrumb,
+  Spin,
+  Result,
+  Card,
+  Divider,
+  Col,
+  Row,
+  Drawer,
+  Table,
+  Form,
+  InputNumber,
+  Tag
+} from 'ant-design-vue'
+import App from './App.vue'
 
-createApp(App).mount("#app");
+const app = createApp({
+  render: () => h(App)
+})
+app.config.productionTip = false
+app.use(Avatar)
+app.use(Layout)
+app.use(Button)
+app.use(Breadcrumb)
+app.use(Spin)
+app.use(Result)
+app.use(Card)
+app.use(Divider)
+app.use(Col)
+app.use(Row)
+app.use(Drawer)
+app.use(Table)
+app.use(Form)
+app.use(InputNumber)
+app.use(Tag)
+app.mount('#app')
