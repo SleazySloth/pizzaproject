@@ -27,11 +27,12 @@
 
       <a-layout-content style="padding: 0 50px; margin-top: 24px">
         <div class="site-layout-content">
-          <a-button ghost size="large">Option 1 </a-button>
-          <a-button ghost size="large">Option 2</a-button>
-          <p></p>
-          <a-button ghost size="large">Option 3</a-button>
-          <a-button danger ghost size="large">Option 4</a-button>
+          <span>
+            <a-button ghost size="large">Option 1</a-button> &nbsp;
+            <a-button ghost size="large">Option 2</a-button> &nbsp;
+            <a-button ghost size="large">Option 3</a-button> &nbsp;
+            <a-button danger ghost size="large">Option 4</a-button>
+          </span>
           <!--          <CoolScreen></CoolScreen>-->
         </div>
       </a-layout-content>
