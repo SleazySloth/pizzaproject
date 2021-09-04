@@ -1,19 +1,65 @@
 <template>
-  <div>
+  <a-layout>
+    <a-layout-header style="background-color: #46484d">
+      <div class="site-layout-header" id="nav" style="color: #5de0ec">
+        <h1
+          style="
+            color: steelblue;
+            font-family: Herculanum, fantasy;
+            text-align: center;
+            max-width: content-box;
+          "
+        >
+          <FireFilled />
+          <FireTwoTone twoToneColor="#523a3a" spin />
+          <FireFilled />
+          <b> THE PIZZA STORE </b>
+          <FireFilled />
+          <FireTwoTone twoToneColor="#523a3a" spin />
+          <FireFilled />
+        </h1>
+      </div>
+    </a-layout-header>
     <a-layout>
-      <a-layout-content> </a-layout-content>
-      <CoolScreen></CoolScreen>
-      <a-button>Text</a-button>
+      <a-layout-sider style="width: 80vw">
+        <Sider></Sider>
+      </a-layout-sider>
+
+      <a-layout-content style="padding: 0 50px; margin-top: 24px">
+        <div class="site-layout-content">
+          <a-button ghost size="large">Option 1 </a-button>
+          <a-button ghost size="large">Option 2</a-button>
+          <p></p>
+          <a-button ghost size="large">Option 3</a-button>
+          <a-button danger ghost size="large">Option 4</a-button>
+          <!--          <CoolScreen></CoolScreen>-->
+        </div>
+      </a-layout-content>
     </a-layout>
-  </div>
+    <a-layout>
+      <a-layout-footer>
+        <div class="site-layout-footer">Feet</div>
+      </a-layout-footer>
+    </a-layout>
+  </a-layout>
 </template>
 <script>
-import CoolScreen from '@/components/CoolScreen'
+// import CoolScreen from '@/components/CoolScreen'
+// import Header from '@/components/Header'
+import Sider from '@/components/Sider'
+// import { FireOutlined } from '@ant-design/icons-vue'
+import { FireFilled } from '@ant-design/icons-vue'
+import { FireTwoTone } from '@ant-design/icons-vue'
 
 export default {
   name: 'App',
   components: {
-    CoolScreen
+    // Header,
+    // CoolScreen,
+    Sider,
+    // FireOutlined,
+    FireFilled,
+    FireTwoTone
   }
 }
 </script>
@@ -37,17 +83,19 @@ export default {
 }
 .site-layout-header {
   min-height: 10vh;
+  max-height: 30px;
+  font-size: 30px;
 }
 .site-layout-content {
   min-height: 80vh;
-  padding: 24px;
-  background: #fff;
+  padding: 40px;
+  background: steelblue;
 }
 .site-layout-footer {
-  min-height: 12vh;
+  min-height: 5px;
+  max-height: 10px;
   text-align: center;
-  padding-top: 3vh;
-  margin-bottom: 0%;
-  padding-bottom: 0%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 </style>

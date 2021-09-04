@@ -14,7 +14,9 @@ import {
   Table,
   Form,
   InputNumber,
-  Tag
+  Tag,
+  PageHeader,
+  Menu
 } from 'ant-design-vue'
 import App from './App.vue'
 
@@ -37,4 +39,6 @@ app.use(Table)
 app.use(Form)
 app.use(InputNumber)
 app.use(Tag)
+app.use(PageHeader)
+app.use(Menu)
 app.mount('#app')
