@@ -1,13 +1,5 @@
 <template>
   <div style="max-width: content-box">
-    <!--    <a-button-->
-    <!--      type="primary"-->
-    <!--      @click="toggleCollapsed"-->
-    <!--      style="margin-bottom: 16px"-->
-    <!--    >-->
-    <!--      <MenuUnfoldOutlined v-if="collapsed" />-->
-    <!--      <MenuFoldOutlined v-else />-->
-    <!--    </a-button>-->
     <a-menu
       mode="vertical"
       theme="dark"
@@ -15,22 +7,13 @@
       v-model:openKeys="openKeys"
       v-model:selectedKeys="selectedKeys"
     >
-      <a-menu-item key="1">
-        <!--        <template #icon>-->
-        <!--          <PieChartOutlined />-->
-        <!--        </template>-->
+      <a-menu-item key="1" @click="goToHome()">
         <span>Option 1</span>
       </a-menu-item>
-      <a-menu-item key="2">
-        <!--        <template #icon>-->
-        <!--          <DesktopOutlined />-->
-        <!--        </template>-->
+      <a-menu-item key="2" @click="goToAbout()">
         <span>Option 2</span>
       </a-menu-item>
       <a-menu-item key="3">
-        <!--        <template #icon>-->
-        <!--          <InboxOutlined />-->
-        <!--        </template>-->
         <span>Option 3</span>
       </a-menu-item>
     </a-menu>
@@ -39,16 +22,17 @@
 
 <script>
 import { defineComponent, reactive, toRefs, watch } from 'vue'
-import // MenuFoldOutlined,
-// MenuUnfoldOutlined
-// PieChartOutlined,
-// MailOutlined,
-// DesktopOutlined,
-// InboxOutlined,
-// AppstoreOutlined
-'@ant-design/icons-vue'
+import '@ant-design/icons-vue'
 export default defineComponent({
   name: 'Sider',
+  methods: {
+    goToHome() {
+      this.$router.push('/Home')
+    },
+    goToAbout() {
+      this.$router.push('/About')
+    }
+  },
   setup() {
     const state = reactive({
       collapsed: false,
@@ -70,15 +54,7 @@ export default defineComponent({
 
     return { ...toRefs(state), toggleCollapsed }
   },
-  components: {
-    // MenuFoldOutlined,
-    // MenuUnfoldOutlined
-    // PieChartOutlined,
-    // MailOutlined,
-    // DesktopOutlined,
-    // InboxOutlined,
-    // AppstoreOutlined
-  }
+  components: {}
 })
 </script>
 

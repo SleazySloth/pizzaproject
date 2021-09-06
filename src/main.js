@@ -19,6 +19,7 @@ import {
   Menu,
   Space
 } from 'ant-design-vue'
+import router from './router'
 import App from './App.vue'
 
 const app = createApp({
@@ -43,4 +44,5 @@ app.use(Tag)
 app.use(PageHeader)
 app.use(Menu)
 app.use(Space)
+app.use(router)
 app.mount('#app')
