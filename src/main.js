@@ -16,7 +16,8 @@ import {
   InputNumber,
   Tag,
   PageHeader,
-  Menu
+  Menu,
+  Space
 } from 'ant-design-vue'
 import App from './App.vue'
 
@@ -41,4 +42,5 @@ app.use(InputNumber)
 app.use(Tag)
 app.use(PageHeader)
 app.use(Menu)
+app.use(Space)
 app.mount('#app')
