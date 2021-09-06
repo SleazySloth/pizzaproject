@@ -1,17 +1,68 @@
 <template>
   <div class="site-layout-content">
     <a-space :size="20">
-      <a-button ghost size="large">Option 1</a-button>
-      <a-button ghost size="large">Option 2</a-button>
-      <a-button ghost size="large">Option 3</a-button>
-      <a-button danger ghost size="large">Option 4</a-button>
+      <a-image
+        :width="400"
+        :preview="false"
+        src="https://cdn.shopify.com/s/files/1/0808/5563/products/061819_Naked-Crust_Full_800x.jpg?v=1620854810"
+        @click="
+          crustClick({
+            thiccCrust: true,
+            thinCrust: false,
+            veganCrust: false
+          })
+        "
+      />
+      <a-button ghost size="large"> </a-button>
+      <a-button
+        ghost
+        size="large"
+        @click="
+          crustClick({
+            thiccCrust: false,
+            thinCrust: true,
+            veganCrust: false
+          })
+        "
+        >Thin Crust</a-button
+      >
+      <a-button
+        ghost
+        size="large"
+        @click="
+          crustClick({
+            thiccCrust: true,
+            thinCrust: false,
+            veganCrust: true
+          })
+        "
+        >Vegan Crust</a-button
+      >
     </a-space>
-    <!--          <CoolScreen></CoolScreen>-->
+    <h1>thicc: {{ pizza.thiccCrust }}</h1>
   </div>
 </template>
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      pizza: { thiccCrust: true }
+    }
+  },
+  methods: {
+    crustClick(crust) {
+      this.pizza = crust
+      if (crust.thiccCrust) {
+        console.log('Thiccy')
+      } else if (crust.thinCrust) {
+        console.log('Thinn')
+      } else {
+        console.log('Freak')
+        //method for clickin pictures
+      }
+    }
+  },
   components: {}
 }
 </script>

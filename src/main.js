@@ -17,7 +17,8 @@ import {
   Tag,
   PageHeader,
   Menu,
-  Space
+  Space,
+  Image
 } from 'ant-design-vue'
 import router from './router'
 import App from './App.vue'
@@ -44,5 +45,6 @@ app.use(Tag)
 app.use(PageHeader)
 app.use(Menu)
 app.use(Space)
+app.use(Image)
 app.use(router)
 app.mount('#app')
