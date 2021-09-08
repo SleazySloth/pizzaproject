@@ -4,7 +4,7 @@
       <a-image
         :width="400"
         :preview="false"
-        src="https://cdn.shopify.com/s/files/1/0808/5563/products/061819_Naked-Crust_Full_800x.jpg?v=1620854810"
+        :src="require('@/assets/thick_crust.png')"
         @click="
           crustClick({
             thiccCrust: true,
@@ -31,7 +31,7 @@
         size="large"
         @click="
           crustClick({
-            thiccCrust: true,
+            thiccCrust: false,
             thinCrust: false,
             veganCrust: true
           })
