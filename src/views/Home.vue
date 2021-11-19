@@ -2,9 +2,9 @@
   <div class="site-layout-content">
     <a-space :size="20">
       <a-image
-        :width="400"
+        :width="200"
         :preview="false"
-        :src="require('@/assets/thick_crust.png')"
+        :src="require('@/assets/naked_crust.jpeg')"
         @click="
           crustClick({
             thiccCrust: true,
@@ -13,10 +13,10 @@
           })
         "
       />
-      <a-button ghost size="large"> </a-button>
-      <a-button
-        ghost
-        size="large"
+      <a-image
+        :width="200"
+        :preview="false"
+        :src="require('@/assets/naked_crust.jpeg')"
         @click="
           crustClick({
             thiccCrust: false,
@@ -24,11 +24,11 @@
             veganCrust: false
           })
         "
-        >Thin Crust</a-button
-      >
-      <a-button
-        ghost
-        size="large"
+      />
+      <a-image
+        :width="200"
+        :preview="false"
+        :src="require('@/assets/naked_crust.jpeg')"
         @click="
           crustClick({
             thiccCrust: false,
@@ -36,10 +36,17 @@
             veganCrust: true
           })
         "
-        >Vegan Crust</a-button
-      >
+      />
     </a-space>
-    <h1>thicc: {{ pizza.thiccCrust }}</h1>
+    <h1>
+      Crust Type: Thick:{{ pizza.thiccCrust }}, Thin:{{ pizza.thinCrust }},
+      Vegan:{{ pizza.veganCrust }}
+    </h1>
+    <a-space size="large">
+      <a-button size="large">Red Sauce</a-button>
+      <a-button size="large">White Sauce</a-button>
+      <a-button size="large">Green Sauce</a-button>
+    </a-space>
   </div>
 </template>
 <script>
@@ -84,19 +91,20 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-.site-layout-header {
-  min-height: 10vh;
-  max-height: 30px;
-  font-size: 30px;
-}
+/*.site-layout-header {*/
+/*  min-height: 10vh;*/
+/*  max-height: 30px;*/
+/*  font-size: 30px;*/
+/*}*/
 .site-layout-content {
-  min-height: 80vh;
-  padding: 40px;
+  min-height: 90vh;
+  max-height: 90vh;
+  padding: 20px;
   background: steelblue;
 }
 .site-layout-footer {
-  min-height: 5px;
-  max-height: 10px;
+  min-height: 5vh;
+  max-height: 5vh;
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 0;

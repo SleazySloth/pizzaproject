@@ -1,5 +1,10 @@
 <template>
   <div style="max-width: content-box">
+    <a-image
+      :width="200"
+      :preview="false"
+      :src="require('@/assets/DigitalPizza_logo.jpg')"
+    />
     <a-menu
       mode="vertical"
       theme="dark"
@@ -8,13 +13,13 @@
       v-model:selectedKeys="selectedKeys"
     >
       <a-menu-item key="1" @click="goToHome()">
-        <span>Option 1</span>
+        <span>Crust & Sauce</span>
       </a-menu-item>
       <a-menu-item key="2" @click="goToAbout()">
-        <span>Option 2</span>
+        <span>Toppings</span>
       </a-menu-item>
-      <a-menu-item key="3">
-        <span>Option 3</span>
+      <a-menu-item key="3" @click="goToExtras()">
+        <span>Extras</span>
       </a-menu-item>
     </a-menu>
   </div>
@@ -31,6 +36,9 @@ export default defineComponent({
     },
     goToAbout() {
       this.$router.push('/About')
+    },
+    goToExtras() {
+      this.$router.push('/Extras')
     }
   },
   setup() {
