@@ -2,7 +2,17 @@
   <a-layout>
     <a-layout>
       <a-layout-sider class="site-layout-sider" width="20vw">
-        <Sider></Sider>
+        <div style="max-width: content-box">
+          <a-image
+            :preview="false"
+            :src="require('@/assets/DigitalPizza_logo.jpg')"
+            style="width: 20vw"
+          />
+          <p>
+            This is where the system will print out the different components of
+            the pizza class as an itemized list.
+          </p>
+        </div>
       </a-layout-sider>
 
       <a-layout-content>
@@ -10,9 +20,9 @@
           <router-view />
         </div>
       </a-layout-content>
-      <a-layout-sider class="site-layout-sider" width="20vw">
-        <PaymentSider></PaymentSider>
-      </a-layout-sider>
+      <!--      <a-layout-sider class="site-layout-sider" width="20vw">-->
+      <!--        &lt;!&ndash;        <PaymentSider></PaymentSider>&ndash;&gt;-->
+      <!--      </a-layout-sider>-->
     </a-layout>
 
     <a-layout>
@@ -23,14 +33,14 @@
   </a-layout>
 </template>
 <script>
-import Sider from '@/components/Sider'
-import PaymentSider from '@/components/PaymentSider'
+// import Sider from '@/components/Sider'
+// import PaymentSider from '@/components/PaymentSider'
 
 export default {
   name: 'App',
   components: {
-    Sider,
-    PaymentSider
+    // Sider,
+    // PaymentSider
   }
 }
 </script>

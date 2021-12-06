@@ -19,7 +19,7 @@
       <a-image
         :width="200"
         :preview="false"
-        :src="require('@/assets/naked_crust.jpeg')"
+        :src="require('@/assets/thickcrust.png')"
         @click="
           crustClick({
             thickCrust: true
@@ -29,7 +29,7 @@
       <a-image
         :width="200"
         :preview="false"
-        :src="require('@/assets/naked_crust.jpeg')"
+        :src="require('@/assets/thincrust.png')"
         @click="
           crustClick({
             thinCrust: true
@@ -39,7 +39,7 @@
       <a-image
         :width="200"
         :preview="false"
-        :src="require('@/assets/naked_crust.jpeg')"
+        :src="require('@/assets/vegancrust.png')"
         @click="
           crustClick({
             veganCrust: true
