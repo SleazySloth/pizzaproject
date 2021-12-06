@@ -1,27 +1,7 @@
 <template>
   <a-layout>
-    <!--    <a-layout-header style="background-color: #46484d">-->
-    <!--      <div class="site-layout-header" id="nav" style="color: #5de0ec">-->
-    <!--        <h1-->
-    <!--          style="-->
-    <!--            color: steelblue;-->
-    <!--            font-family: Herculanum, fantasy;-->
-    <!--            text-align: center;-->
-    <!--            max-width: content-box;-->
-    <!--          "-->
-    <!--        >-->
-    <!--          <FireFilled />-->
-    <!--          <FireTwoTone twoToneColor="#523a3a" spin />-->
-    <!--          <FireFilled />-->
-    <!--          <b> THE PIZZA STORE </b>-->
-    <!--          <FireFilled />-->
-    <!--          <FireTwoTone twoToneColor="#523a3a" spin />-->
-    <!--          <FireFilled />-->
-    <!--        </h1>-->
-    <!--      </div>-->
-    <!--    </a-layout-header>-->
     <a-layout>
-      <a-layout-sider style="width: 80vw">
+      <a-layout-sider class="site-layout-sider" width="20vw">
         <Sider></Sider>
       </a-layout-sider>
 
@@ -30,34 +10,59 @@
           <router-view />
         </div>
       </a-layout-content>
-      <a-layout-sider>
+      <a-layout-sider class="site-layout-sider" width="20vw">
         <PaymentSider></PaymentSider>
       </a-layout-sider>
     </a-layout>
 
     <a-layout>
-      <a-layout-footer>
-        <div class="site-layout-footer">
-          Copyright © 2021 Digital Pizza Production Group - SWE 3313
-        </div>
+      <a-layout-footer class="site-layout-footer">
+        <div>Copyright © 2021 Digital Pizza Production Group - SWE 3313</div>
       </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
 <script>
-// import { FireFilled, FireTwoTone } from '@ant-design/icons-vue'
 import Sider from '@/components/Sider'
 import PaymentSider from '@/components/PaymentSider'
 
 export default {
   name: 'App',
   components: {
-    // FireFilled,
-    // FireTwoTone,
     Sider,
     PaymentSider
   }
 }
 </script>
 
-<style></style>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 3px;
+}
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+.site-layout-content {
+  min-height: 95vh;
+  padding: 20px;
+  background-color: #cbcbcb;
+}
+.site-layout-footer {
+  height: 5vh;
+  background-color: darkorange;
+}
+.site-layout-sider {
+  background-color: #222222;
+}
+</style>

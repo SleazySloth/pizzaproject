@@ -1,27 +1,27 @@
-<template>
+<template class="site-layout-sider">
   <div style="max-width: content-box">
     <a-image
-      :width="200"
       :preview="false"
       :src="require('@/assets/DigitalPizza_logo.jpg')"
+      style="width: 20vw"
     />
-    <a-menu
-      mode="vertical"
-      theme="dark"
-      :inline-collapsed="collapsed"
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
-    >
-      <a-menu-item key="1" @click="goToHome()">
-        <span>Crust & Sauce</span>
-      </a-menu-item>
-      <a-menu-item key="2" @click="goToAbout()">
-        <span>Toppings</span>
-      </a-menu-item>
-      <a-menu-item key="3" @click="goToExtras()">
-        <span>Extras</span>
-      </a-menu-item>
-    </a-menu>
+    <!--    <a-menu-->
+    <!--      mode="vertical"-->
+    <!--      theme="dark"-->
+    <!--      :inline-collapsed="collapsed"-->
+    <!--      v-model:openKeys="openKeys"-->
+    <!--      v-model:selectedKeys="selectedKeys"-->
+    <!--    >-->
+    <!--      <a-menu-item key="1" @click="goToHome()">-->
+    <!--        <span>Crust & Sauce</span>-->
+    <!--      </a-menu-item>-->
+    <!--      <a-menu-item key="2" @click="goToAbout()">-->
+    <!--        <span>Toppings</span>-->
+    <!--      </a-menu-item>-->
+    <!--      <a-menu-item key="3" @click="goToExtras()">-->
+    <!--        <span>Extras</span>-->
+    <!--      </a-menu-item>-->
+    <!--    </a-menu>-->
   </div>
 </template>
 
@@ -66,4 +66,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.site-layout-sider {
+  width: 10vh;
+}
+</style>

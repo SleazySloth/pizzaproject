@@ -18,7 +18,8 @@ import {
   PageHeader,
   Menu,
   Space,
-  Image
+  Image,
+  Radio
 } from 'ant-design-vue'
 import router from './router'
 import App from './App.vue'
@@ -47,4 +48,5 @@ app.use(Menu)
 app.use(Space)
 app.use(Image)
 app.use(router)
+app.use(Radio)
 app.mount('#app')
