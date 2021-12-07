@@ -5,9 +5,7 @@
       :src="require('@/assets/DigitalPizza_logo.jpg')"
       style="width: 25vw"
     />
-    <h2
-      style="background-color: white; padding-top: 20px; font-size: xxx-large"
-    >
+    <h2 style="background-color: white; padding-top: 20px; font-size: xx-large">
       Your Pizza:
     </h2>
     <!--    <h3 style="background-color: white; font-size: large">{{ pizza }}</h3>-->
@@ -30,6 +28,16 @@
       "
     >
       Crust: {{ this.displayCrust() }}
+    </h3>
+    <h3
+      style="
+        background-color: white;
+        font-size: xx-large;
+        text-align: left;
+        padding-left: 25px;
+      "
+    >
+      Sauce: {{ this.displaySauce() }}
     </h3>
     <h3
       style="
@@ -124,10 +132,22 @@ export default defineComponent({
       if (this.pizza.thin) {
         return 'Thin'
       }
-      if (this.pizza.Vegan) {
+      if (this.pizza.vegan) {
         return 'Vegan'
       }
       return 'Thick'
+    },
+    displaySauce() {
+      if (this.pizza.redSauce) {
+        return 'House Marinara'
+      }
+      if (this.pizza.whiteSauce) {
+        return "Alfonso's Alfredo"
+      }
+      if (this.pizza.greenSauce) {
+        return "Papa's Pesto Verde"
+      }
+      return 'House Marinara'
     },
     displayCheese() {
       if (this.pizza.mozzarella) {

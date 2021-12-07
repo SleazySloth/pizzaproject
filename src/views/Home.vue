@@ -222,90 +222,97 @@
         <a-checkbox-group v-model:value="extras">
           <a-row>
             <a-col :span="8">
-              <a-checkbox value="breadSticks"
+              <a-checkbox
+                value="breadSticks"
+                @click="
+                  onToppingsChange({
+                    ...pizza,
+                    breadSticks: !pizza.breadSticks
+                  })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/breadsticks.png')"
-                  @click="
-                    onToppingsChange({
-                      ...pizza,
-                      breadSticks: !pizza.breadSticks
-                    })
-                  "
               /></a-checkbox>
             </a-col>
             <a-col :span="8">
-              <a-checkbox value="cookiePizza"
+              <a-checkbox
+                value="cookiePizza"
+                @click="
+                  onToppingsChange({
+                    ...pizza,
+                    cookiePizza: !pizza.cookiePizza
+                  })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/cookiepizza.png')"
-                  @click="
-                    onToppingsChange({
-                      ...pizza,
-                      cookiePizza: !pizza.cookiePizza
-                    })
-                  "
               /></a-checkbox>
             </a-col>
             <a-col :span="8">
-              <a-checkbox value="moltenLavaCake"
+              <a-checkbox
+                value="moltenLavaCake"
+                @click="
+                  onToppingsChange({ ...pizza, lavaCake: !pizza.lavaCake })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/moltenlavacake.png')"
-                  @click="
-                    onToppingsChange({ ...pizza, lavaCake: !pizza.lavaCake })
-                  "
               /></a-checkbox>
             </a-col>
             <a-col :span="8">
-              <a-checkbox value="cinnamonSticks"
+              <a-checkbox
+                value="cinnamonSticks"
+                @click="
+                  onToppingsChange({
+                    ...pizza,
+                    cinnamonSticks: !pizza.cinnamonSticks
+                  })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/cinnamonsticks.png')"
-                  @click="
-                    onToppingsChange({
-                      ...pizza,
-                      cinnamonSticks: !pizza.cinnamonSticks
-                    })
-                  "
               /></a-checkbox>
             </a-col>
             <a-col :span="8">
-              <a-checkbox value="digitalWatch"
+              <a-checkbox
+                value="digitalWatch"
+                @click="
+                  onToppingsChange({
+                    ...pizza,
+                    digitalWatch: !pizza.digitalWatch
+                  })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/digitalwatch.png')"
-                  @click="
-                    onToppingsChange({
-                      ...pizza,
-                      digitalWatch: !pizza.digitalWatch
-                    })
-                  "
               /></a-checkbox> </a-col
             ><a-col :span="8">
-              <a-checkbox value="beverage"
+              <a-checkbox
+                value="beverage"
+                @click="
+                  onToppingsChange({ ...pizza, beverage: !pizza.beverage })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/beverage.png')"
-                  @click="
-                    onToppingsChange({ ...pizza, beverage: !pizza.beverage })
-                  "
               /></a-checkbox> </a-col
             ><a-col :span="8">
-              <a-checkbox value="pizzaHat"
+              <a-checkbox
+                value="pizzaHat"
+                @click="
+                  onToppingsChange({ ...pizza, pizzaHat: !pizza.pizzaHat })
+                "
                 ><a-image
                   :width="150"
                   :preview="false"
                   :src="require('@/assets/pizzahat.png')"
-                  @click="
-                    onToppingsChange({ ...pizza, pizzaHat: !pizza.pizzaHat })
-                  "
               /></a-checkbox> </a-col
             ><a-col :span="8">
               <a-checkbox value="halibut"
