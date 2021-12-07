@@ -19,7 +19,8 @@ import {
   Menu,
   Space,
   Image,
-  Radio
+  Radio,
+  Checkbox
 } from 'ant-design-vue'
 import router from './router'
 import App from './App.vue'
@@ -49,4 +50,5 @@ app.use(Space)
 app.use(Image)
 app.use(router)
 app.use(Radio)
+app.use(Checkbox)
 app.mount('#app')

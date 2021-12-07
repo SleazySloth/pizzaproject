@@ -8,13 +8,14 @@
     </a-layout-sider>
     <a-layout-content>
       <div class="site-layout-content">
-        <h2>PIZZA SIZE</h2>
+        <h2 style="font-weight: bolder; font-size: x-large">PIZZA SIZE</h2>
         <!--    Pizza size button group-->
         <div :style="{ marginTop: '16px' }">
           <a-radio-group
             v-model:value="pizzaSize"
             button-style="solid"
             v-on:click="onSizeChange"
+            size="large"
           >
             <a-space>
               <a-radio-button value="kids" disabled>Kids</a-radio-button>
@@ -24,7 +25,9 @@
             >
           </a-radio-group>
         </div>
-        <h2>CRUST TYPE</h2>
+        <p></p>
+
+        <h2 style="font-weight: bolder; font-size: x-large">CRUST TYPE</h2>
         <!--Crust type button group-->
         <div :style="{ marginTop: '16px' }">
           <a-radio-group
@@ -37,26 +40,26 @@
             <a-space>
               <a-radio-button value="thick"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/thickcrust.png')"
               /></a-radio-button>
               <a-radio-button value="thin"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/thincrust.png')"
               /></a-radio-button>
               <a-radio-button value="vegan"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/vegancrust.png')"
               /></a-radio-button>
             </a-space>
           </a-radio-group>
         </div>
-        <h2>SAUCE</h2>
+        <h2 style="font-weight: bolder; font-size: x-large">SAUCE</h2>
         <!--    Sauce type button group-->
         <div :style="{ marginTop: '16px' }">
           <a-radio-group
@@ -69,19 +72,19 @@
             <a-space>
               <a-radio-button value="red"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/redsauce.png')"
               /></a-radio-button>
               <a-radio-button value="white"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/whitesauce.png')"
               /></a-radio-button>
               <a-radio-button value="green"
                 ><a-image
-                  :width="200"
+                  :width="150"
                   :preview="false"
                   :src="require('@/assets/greensauce.png')"
               /></a-radio-button>
@@ -89,179 +92,234 @@
           </a-radio-group>
         </div>
 
-        <h2>CHEESES</h2>
+        <h2 style="font-weight: bolder; font-size: x-large">CHEESES</h2>
         <!--        Cheese button group-->
-        <a-space :size="50">
-          <a-button
+        <div :style="{ marginTop: '16px' }">
+          <a-radio-group
+            v-model:value="pizzaCheese"
+            button-style="solid"
+            v-on:click="onCheeseChange"
             size="large"
-            @click="onChange({ ...pizza, mozzarella: !pizza.mozzarella })"
-            >Mozzarella</a-button
           >
-          <a-button
-            size="large"
-            @click="onChange({ ...pizza, cheddar: !pizza.cheddar })"
-            >Cheddar</a-button
-          >
-          <a-button
-            size="large"
-            @click="onChange({ ...pizza, provolone: !pizza.provolone })"
-            >Provolone</a-button
-          >
-          <a-button
-            size="large"
-            @click="onChange({ ...pizza, feta: !pizza.feta })"
-            >Feta (Greek)</a-button
-          >
-        </a-space>
+            <a-space>
+              <a-radio-button value="mozzarella">Mozzarella</a-radio-button>
+              <a-radio-button value="cheddar">Cheddar</a-radio-button>
+              <a-radio-button value="provolone">Provolone</a-radio-button>
+              <a-radio-button value="feta">Feta (Greek)</a-radio-button>
+            </a-space>
+          </a-radio-group>
+        </div>
         <p></p>
 
-        <h2>TOPPINGS</h2>
+        <h2 style="font-weight: bolder; font-size: x-large">TOPPINGS</h2>
         <!--    Toppings button group-->
-        <div>
-          <a-space size="large">
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, sausage: !pizza.sausage })"
-              >Italian Sausage</a-button
+        <a-checkbox-group v-model:value="toppings" size="large">
+          <a-row>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="sausage"
+              @click="onToppingsChange({ ...pizza, sausage: !pizza.sausage })"
             >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, pepperoni: !pizza.pepperoni })"
-              >Pepperoni</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, chicken: !pizza.chicken })"
-              >Chicken</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, bacon: !pizza.bacon })"
-              >Bacon</a-button
-            >
-          </a-space>
-        </div>
-        <div><p></p></div>
-        <div>
-          <a-space size="large">
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, onions: !pizza.onions })"
-              >Onions</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, greenPeppers: !pizza.greenPeppers })"
-              >Green Peppers</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, olives: !pizza.olives })"
-              >Olives</a-button
-            >
-            <a-button
-              size="large"
+              Italian Sausage
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="pepperoni"
               @click="
-                onChange({ ...pizza, bananaPeppers: !pizza.bananaPeppers })
+                onToppingsChange({ ...pizza, pepperoni: !pizza.pepperoni })
               "
-              >Banana Peppers</a-button
-            >
-          </a-space>
-        </div>
-        <div><p></p></div>
-
-        <div>
-          <a-space size="large">
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, spinach: !pizza.spinach })"
-              >Spinach</a-button
-            >
-            <a-button
-              size="large"
+              >Pepperoni
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="chicken"
+              @click="onToppingsChange({ ...pizza, chicken: !pizza.chicken })"
+              >Chicken
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="bacon"
+              @click="onToppingsChange({ ...pizza, bacon: !pizza.bacon })"
+              >Bacon
+            </a-checkbox>
+          </a-row>
+          <a-row>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="onions"
+              @click="onToppingsChange({ ...pizza, onions: !pizza.onions })"
+              >Onions
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="greenPeppers"
               @click="
-                onChange({
+                onToppingsChange({
+                  ...pizza,
+                  greenPeppers: !pizza.greenPeppers
+                })
+              "
+              >Green Peppers
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="olives"
+              @click="onToppingsChange({ ...pizza, olives: !pizza.olives })"
+              >Olives
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="bananaPeppers"
+              @click="
+                onToppingsChange({
+                  ...pizza,
+                  bananaPeppers: !pizza.bananaPeppers
+                })
+              "
+              >Banana Peppers
+            </a-checkbox>
+          </a-row>
+          <a-row>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="spinach"
+              @click="onToppingsChange({ ...pizza, spinach: !pizza.spinach })"
+              >Spinach
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="sunDriedTomatoes"
+              @click="
+                onToppingsChange({
                   ...pizza,
                   sunDriedTomatoes: !pizza.sunDriedTomatoes
                 })
               "
-              >Sun-Dried Tomatoes</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, artichokes: !pizza.artichokes })"
-              >Artichokes</a-button
-            >
-            <a-button
-              size="large"
-              @click="onChange({ ...pizza, pineapple: !pizza.pineapple })"
-              >Pineapple</a-button
-            >
-          </a-space>
-          <div><p></p></div>
-        </div>
-
-        <h2>EXTRAS</h2>
-        <!--    Extras button group-->
-        <div>
-          <a-space size="large">
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/breadsticks.png')"
-              @click="onChange({ ...pizza, breadSticks: !pizza.breadSticks })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/cookiepizza.png')"
-              @click="onChange({ ...pizza, cookiePizza: !pizza.cookiePizza })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/moltenlavacake.png')"
-              @click="onChange({ ...pizza, lavaCake: !pizza.lavaCake })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/cinnamonsticks.png')"
+              >Sun-Dried Tomatoes
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="artichokes"
               @click="
-                onChange({ ...pizza, cinnamonSticks: !pizza.cinnamonSticks })
+                onToppingsChange({ ...pizza, artichokes: !pizza.artichokes })
               "
-            />
-          </a-space>
-        </div>
-        <div><p></p></div>
-        <div>
-          <a-space size="large">
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/digitalwatch.png')"
-              @click="onChange({ ...pizza, digitalWatch: !pizza.digitalWatch })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/beverage.png')"
-              @click="onChange({ ...pizza, beverage: !pizza.beverage })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/pizzahat.png')"
-              @click="onChange({ ...pizza, pizzaHat: !pizza.pizzaHat })"
-            />
-            <a-image
-              :width="200"
-              :preview="false"
-              :src="require('@/assets/halibut.png')"
-              @click="onChange({ ...pizza, halibut: !pizza.halibut })"
-            />
-          </a-space>
-        </div>
+              >Artichokes
+            </a-checkbox>
+            <a-checkbox
+              class="toppings-checkbox"
+              value="pineapple"
+              @click="
+                onToppingsChange({ ...pizza, pineapple: !pizza.pineapple })
+              "
+              >Pineapple
+            </a-checkbox>
+          </a-row>
+        </a-checkbox-group>
+        <p></p>
+
+        <h2 style="font-weight: bolder; font-size: x-large">EXTRAS</h2>
+        <!--    Extras button group-->
+        <a-checkbox-group v-model:value="extras">
+          <a-row>
+            <a-col :span="8">
+              <a-checkbox value="breadSticks"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/breadsticks.png')"
+                  @click="
+                    onToppingsChange({
+                      ...pizza,
+                      breadSticks: !pizza.breadSticks
+                    })
+                  "
+              /></a-checkbox>
+            </a-col>
+            <a-col :span="8">
+              <a-checkbox value="cookiePizza"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/cookiepizza.png')"
+                  @click="
+                    onToppingsChange({
+                      ...pizza,
+                      cookiePizza: !pizza.cookiePizza
+                    })
+                  "
+              /></a-checkbox>
+            </a-col>
+            <a-col :span="8">
+              <a-checkbox value="moltenLavaCake"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/moltenlavacake.png')"
+                  @click="
+                    onToppingsChange({ ...pizza, lavaCake: !pizza.lavaCake })
+                  "
+              /></a-checkbox>
+            </a-col>
+            <a-col :span="8">
+              <a-checkbox value="cinnamonSticks"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/cinnamonsticks.png')"
+                  @click="
+                    onToppingsChange({
+                      ...pizza,
+                      cinnamonSticks: !pizza.cinnamonSticks
+                    })
+                  "
+              /></a-checkbox>
+            </a-col>
+            <a-col :span="8">
+              <a-checkbox value="digitalWatch"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/digitalwatch.png')"
+                  @click="
+                    onToppingsChange({
+                      ...pizza,
+                      digitalWatch: !pizza.digitalWatch
+                    })
+                  "
+              /></a-checkbox> </a-col
+            ><a-col :span="8">
+              <a-checkbox value="beverage"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/beverage.png')"
+                  @click="
+                    onToppingsChange({ ...pizza, beverage: !pizza.beverage })
+                  "
+              /></a-checkbox> </a-col
+            ><a-col :span="8">
+              <a-checkbox value="pizzaHat"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/pizzahat.png')"
+                  @click="
+                    onToppingsChange({ ...pizza, pizzaHat: !pizza.pizzaHat })
+                  "
+              /></a-checkbox> </a-col
+            ><a-col :span="8">
+              <a-checkbox value="halibut"
+                ><a-image
+                  :width="150"
+                  :preview="false"
+                  :src="require('@/assets/halibut.png')"
+                  @click="
+                    onToppingsChange({ ...pizza, halibut: !pizza.halibut })
+                  "
+              /></a-checkbox>
+            </a-col>
+          </a-row>
+        </a-checkbox-group>
       </div>
     </a-layout-content>
   </a-layout>
@@ -276,8 +334,7 @@ export default {
     const pizzaSize = ref('small')
     const pizzaCrust = ref('thick')
     const pizzaSauce = ref('red')
-    // const value2 = ref<string>('a');
-    // const value3 = ref<string>('a');
+    const pizzaCheese = ref('mozzarella')
     const pizza = {
       //pizza size
       kids: false,
@@ -324,75 +381,18 @@ export default {
       pizzaSize,
       pizzaCrust,
       pizzaSauce,
+      pizzaCheese,
+      toppings: ref([]),
+      extras: ref([]),
       pizza: pizza
     }
   },
   methods: {
-    //method for selecting crust type
-    crustClick(crust) {
-      this.pizza = crust
-      if (crust.thickCrust) {
-        console.log('Thiccy')
-      } else if (crust.thinCrust) {
-        console.log('Thinn')
-      } else {
-        console.log('Vegan')
-      }
-    },
-    //method for selecting sauce
-    sauceClick(sauce) {
-      this.pizza = sauce
-      if (sauce.marinaraSauce) {
-        console.log('Red Sauce')
-      } else if (sauce.alfredoSauce) {
-        console.log('White Sauce')
-      } else {
-        console.log('Green Sauce')
-      }
-    },
     onChildClick(pizza) {
       this.pizza = pizza
       console.log(this.pizza)
     },
-    //method for adjusting topping and extras selection
-    onCrustChange(event) {
-      this.pizza.thick = false
-      this.pizza.thin = false
-      this.pizza.vegan = false
-      switch (event.target.value) {
-        case 'thick':
-          this.pizza.thick = true
-          break
-        case 'thin':
-          this.pizza.thin = true
-          break
-        case 'vegan':
-          this.pizza.vegan = true
-          break
-        default:
-          this.pizza.thick = true
-          break
-      }
-    },
-    onSauceChange(event) {
-      this.pizza.redSauce = false
-      this.pizza.whiteSauce = false
-      this.pizza.greenSauce = false
-      switch (event.target.value) {
-        case 'red':
-          this.pizza.redSauce = true
-          break
-        case 'white':
-          this.pizza.whiteSauce = true
-          break
-        case 'green':
-          this.pizza.greenSauce = true
-          break
-        default:
-          this.pizza.redSauce = true
-          break
-      }
-    },
+    //method for selecting size type
     onSizeChange(event) {
       this.pizza.kids = false
       this.pizza.small = false
@@ -416,7 +416,72 @@ export default {
           break
       }
     },
-    onChange(pizza) {
+    //method for selecting crust type
+    onCrustChange(event) {
+      this.pizza.thick = false
+      this.pizza.thin = false
+      this.pizza.vegan = false
+      switch (event.target.value) {
+        case 'thick':
+          this.pizza.thick = true
+          break
+        case 'thin':
+          this.pizza.thin = true
+          break
+        case 'vegan':
+          this.pizza.vegan = true
+          break
+        default:
+          this.pizza.thick = true
+          break
+      }
+    },
+    //method for selecting sauce
+    onSauceChange(event) {
+      this.pizza.redSauce = false
+      this.pizza.whiteSauce = false
+      this.pizza.greenSauce = false
+      switch (event.target.value) {
+        case 'red':
+          this.pizza.redSauce = true
+          break
+        case 'white':
+          this.pizza.whiteSauce = true
+          break
+        case 'green':
+          this.pizza.greenSauce = true
+          break
+        default:
+          this.pizza.redSauce = true
+          break
+      }
+    },
+    //method for selecting cheese type
+    onCheeseChange(event) {
+      this.pizza.mozzarella = false
+      this.pizza.cheddar = false
+      this.pizza.provolone = false
+      this.pizza.feta = false
+      switch (event.target.value) {
+        case 'mozzarella':
+          this.pizza.mozzarella = true
+          break
+        case 'cheddar':
+          this.pizza.cheddar = true
+          break
+        case 'provolone':
+          this.pizza.provolone = true
+          break
+        case 'feta':
+          this.pizza.feta = true
+          break
+        default:
+          this.pizza.mozzarella = true
+          break
+      }
+    },
+    //method for adjusting topping and extras selection
+    onToppingsChange(pizza) {
       this.pizza = pizza
       console.log(this.pizza)
     }
@@ -428,12 +493,12 @@ export default {
 </script>
 <style>
 .crust-group > div > div > label {
-  height: 200px;
+  height: 150px;
 }
 .sauce-group > div > div > label {
-  height: 200px;
+  height: 150px;
 }
-/*.ant-radio-button-wrapper {*/
-/*  height: 22vh;*/
-/*}*/
+.toppings-checkbox {
+  font-size: 20px;
+}
 </style>
