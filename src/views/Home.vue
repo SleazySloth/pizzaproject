@@ -1,79 +1,119 @@
 <template>
   <a-layout>
     <a-layout-sider class="site-layout-sider" width="25vw">
-      <PaymentSider></PaymentSider>
+      <PaymentSider
+        :pizza="pizza"
+        v-on:childToParent="onChildClick"
+      ></PaymentSider>
     </a-layout-sider>
     <a-layout-content>
       <div class="site-layout-content">
         <h2>PIZZA SIZE</h2>
         <!--    Pizza size button group-->
         <div :style="{ marginTop: '16px' }">
-          <a-radio-group v-model:value="value2" button-style="solid">
+          <a-radio-group
+            v-model:value="pizzaSize"
+            button-style="solid"
+            v-on:click="onSizeChange"
+          >
             <a-space>
-              <a-button value="pizza-kids" disabled>Kids</a-button>
-              <a-button value="pizza-small">Small</a-button>
-              <a-button value="pizza-medium">Medium</a-button>
-              <a-button value="pizza-large">Large</a-button></a-space
+              <a-radio-button value="kids" disabled>Kids</a-radio-button>
+              <a-radio-button value="small">Small</a-radio-button>
+              <a-radio-button value="medium">Medium</a-radio-button>
+              <a-radio-button value="large">Large</a-radio-button></a-space
             >
           </a-radio-group>
         </div>
-
         <h2>CRUST TYPE</h2>
         <!--Crust type button group-->
-        <a-space :size="20">
-          <a-image
-            :width="200"
-            :preview="false"
-            :src="require('@/assets/thickcrust.png')"
-            @click="
-              crustClick({
-                thickCrust: true
-              })
-            "
-          />
-          <a-image
-            :width="200"
-            :preview="false"
-            :src="require('@/assets/thincrust.png')"
-            @click="
-              crustClick({
-                thinCrust: true
-              })
-            "
-          />
-          <a-image
-            :width="200"
-            :preview="false"
-            :src="require('@/assets/vegancrust.png')"
-            @click="
-              crustClick({
-                veganCrust: true
-              })
-            "
-          />
-        </a-space>
-        <h1>
-          Crust Type: Thick: {{ pizza.thickCrust }}, Thin:
-          {{ pizza.thinCrust }}, Vegan: {{ pizza.veganCrust }}
-        </h1>
-
+        <div :style="{ marginTop: '16px' }">
+          <a-radio-group
+            class="crust-group"
+            v-model:value="pizzaCrust"
+            button-style="solid"
+            style="height: 25vh"
+            v-on:click="onCrustChange"
+          >
+            <a-space>
+              <a-radio-button value="thick"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/thickcrust.png')"
+              /></a-radio-button>
+              <a-radio-button value="thin"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/thincrust.png')"
+              /></a-radio-button>
+              <a-radio-button value="vegan"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/vegancrust.png')"
+              /></a-radio-button>
+            </a-space>
+          </a-radio-group>
+        </div>
         <h2>SAUCE</h2>
         <!--    Sauce type button group-->
-        <a-space :size="20">
-          <a-button size="large" @click="sauceClick({ marinaraSauce: true })"
-            >House Marinara</a-button
+        <div :style="{ marginTop: '16px' }">
+          <a-radio-group
+            class="sauce-group"
+            v-model:value="pizzaSauce"
+            button-style="solid"
+            style="height: 25vh"
+            v-on:click="onSauceChange"
           >
-          <a-button size="large" @click="sauceClick({ alfredoSauce: true })"
-            >Alfonso's Alfredo</a-button
+            <a-space>
+              <a-radio-button value="red"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/redsauce.png')"
+              /></a-radio-button>
+              <a-radio-button value="white"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/whitesauce.png')"
+              /></a-radio-button>
+              <a-radio-button value="green"
+                ><a-image
+                  :width="200"
+                  :preview="false"
+                  :src="require('@/assets/greensauce.png')"
+              /></a-radio-button>
+            </a-space>
+          </a-radio-group>
+        </div>
+
+        <h2>CHEESES</h2>
+        <!--        Cheese button group-->
+        <a-space :size="50">
+          <a-button
+            size="large"
+            @click="onChange({ ...pizza, mozzarella: !pizza.mozzarella })"
+            >Mozzarella</a-button
           >
-          <a-button size="large" @click="sauceClick({ pestoSauce: true })"
-            >Papa Pesto Verde</a-button
+          <a-button
+            size="large"
+            @click="onChange({ ...pizza, cheddar: !pizza.cheddar })"
+            >Cheddar</a-button
+          >
+          <a-button
+            size="large"
+            @click="onChange({ ...pizza, provolone: !pizza.provolone })"
+            >Provolone</a-button
+          >
+          <a-button
+            size="large"
+            @click="onChange({ ...pizza, feta: !pizza.feta })"
+            >Feta (Greek)</a-button
           >
         </a-space>
-        <h1>
-          Sauce Type: Red: {{ pizza.marinaraSauce }}, White:
-          {{ pizza.alfredoSauce }}, Green: {{ pizza.pestoSauce }}
-        </h1>
+        <p></p>
 
         <h2>TOPPINGS</h2>
         <!--    Toppings button group-->
@@ -165,53 +205,61 @@
         <!--    Extras button group-->
         <div>
           <a-space size="large">
-            <a-button
-              size="large"
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/breadsticks.png')"
               @click="onChange({ ...pizza, breadSticks: !pizza.breadSticks })"
-              >Breadsticks</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/cookiepizza.png')"
               @click="onChange({ ...pizza, cookiePizza: !pizza.cookiePizza })"
-              >Cookie Pizza</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/moltenlavacake.png')"
               @click="onChange({ ...pizza, lavaCake: !pizza.lavaCake })"
-              >Molten Lava Cake</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/cinnamonsticks.png')"
               @click="
                 onChange({ ...pizza, cinnamonSticks: !pizza.cinnamonSticks })
               "
-              >Cinnamon Sticks</a-button
-            >
+            />
           </a-space>
         </div>
         <div><p></p></div>
         <div>
           <a-space size="large">
-            <a-button
-              size="large"
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/digitalwatch.png')"
               @click="onChange({ ...pizza, digitalWatch: !pizza.digitalWatch })"
-              >Digital Watch</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/beverage.png')"
               @click="onChange({ ...pizza, beverage: !pizza.beverage })"
-              >Beverage</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/pizzahat.png')"
               @click="onChange({ ...pizza, pizzaHat: !pizza.pizzaHat })"
-              >Pizza Hat</a-button
-            >
-            <a-button
-              size="large"
+            />
+            <a-image
+              :width="200"
+              :preview="false"
+              :src="require('@/assets/halibut.png')"
               @click="onChange({ ...pizza, halibut: !pizza.halibut })"
-              >Halibut</a-button
-            >
+            />
           </a-space>
         </div>
       </div>
@@ -225,8 +273,11 @@ import PaymentSider from '@/components/PaymentSider'
 export default {
   name: 'Home',
   data() {
-    const value1 = ref('a')
-    const value2 = ref('c')
+    const pizzaSize = ref('small')
+    const pizzaCrust = ref('thick')
+    const pizzaSauce = ref('red')
+    // const value2 = ref<string>('a');
+    // const value3 = ref<string>('a');
     const pizza = {
       //pizza size
       kids: false,
@@ -234,13 +285,18 @@ export default {
       medium: false,
       large: false,
       //crust type
-      thick: false,
-      thin: true,
+      thick: true,
+      thin: false,
       vegan: false,
       //sauce
       redSauce: true,
       whiteSauce: false,
       greenSauce: false,
+      //cheese
+      mozzarella: true,
+      cheddar: false,
+      provolone: false,
+      feta: false,
       //toppings
       sausage: false,
       pepperoni: false,
@@ -264,21 +320,10 @@ export default {
       pizzaHat: false,
       halibut: false
     }
-    if (ref('pizza-kids')) {
-      pizza.kids = !pizza.kids
-    }
-    if (ref('pizza-small')) {
-      pizza.small = !pizza.kids
-    }
-    if (ref('pizza-medium')) {
-      pizza.medium = !pizza.kids
-    }
-    if (ref('pizza-large')) {
-      pizza.large = !pizza.kids
-    }
     return {
-      value1,
-      value2,
+      pizzaSize,
+      pizzaCrust,
+      pizzaSauce,
       pizza: pizza
     }
   },
@@ -305,11 +350,55 @@ export default {
         console.log('Green Sauce')
       }
     },
+    onChildClick(pizza) {
+      this.pizza = pizza
+      console.log(this.pizza)
+    },
     //method for adjusting topping and extras selection
-    onChange(test) {
-      console.log('value1: ', this.value1, test)
-      console.log('value2: ', this.value2)
-      this.pizza = test
+    onCrustChange(event) {
+      this.pizza.thick = false
+      this.pizza.thin = false
+      this.pizza.vegan = false
+      switch (event.target.value) {
+        case 'thick':
+          this.pizza.thick = true
+          break
+        case 'thin':
+          this.pizza.thin = true
+          break
+        case 'vegan':
+          this.pizza.vegan = true
+          break
+        default:
+          this.pizza.thick = true
+          break
+      }
+    },
+    onSizeChange(event) {
+      this.pizza.kids = false
+      this.pizza.small = false
+      this.pizza.medium = false
+      this.pizza.large = false
+      switch (event.target.value) {
+        case 'kids':
+          this.pizza.kids = true
+          break
+        case 'small':
+          this.pizza.small = true
+          break
+        case 'medium':
+          this.pizza.medium = true
+          break
+        case 'large':
+          this.pizza.large = true
+          break
+        default:
+          this.pizza.small = true
+          break
+      }
+    },
+    onChange(pizza) {
+      this.pizza = pizza
       console.log(this.pizza)
     }
   },
@@ -318,4 +407,14 @@ export default {
   }
 }
 </script>
-<style></style>
+<style>
+ul.my-things > li {
+  margin: 2em;
+}
+.crust-group > div > div > label {
+  height: 22vh;
+}
+/*.ant-radio-button-wrapper {*/
+/*  height: 22vh;*/
+/*}*/
+</style>

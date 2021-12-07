@@ -5,17 +5,26 @@
       :src="require('@/assets/DigitalPizza_logo.jpg')"
       style="width: 25vw"
     />
-    <p style="background-color: white; padding-top: 1vh">
-      This is where the system will print out the different components of the
-      pizza class as an itemized list.
-    </p>
+    <h2 style="background-color: white; padding-top: 20px; font-size: xx-large">
+      Your Pizza:
+    </h2>
+    <h3 style="background-color: white; font-size: large">{{ pizza }}</h3>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'PaymentSider'
-}
+import { defineComponent } from 'vue'
+export default defineComponent({
+  name: 'PaymentSider',
+  setup() {
+    return {
+      childMessage: ''
+    }
+  },
+  props: {
+    pizza: Object
+  },
+  methods: {}
+})
 </script>
 
 <style scoped>
