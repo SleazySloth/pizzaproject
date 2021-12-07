@@ -374,6 +374,25 @@ export default {
           break
       }
     },
+    onSauceChange(event) {
+      this.pizza.redSauce = false
+      this.pizza.whiteSauce = false
+      this.pizza.greenSauce = false
+      switch (event.target.value) {
+        case 'red':
+          this.pizza.redSauce = true
+          break
+        case 'white':
+          this.pizza.whiteSauce = true
+          break
+        case 'green':
+          this.pizza.greenSauce = true
+          break
+        default:
+          this.pizza.redSauce = true
+          break
+      }
+    },
     onSizeChange(event) {
       this.pizza.kids = false
       this.pizza.small = false
@@ -408,11 +427,11 @@ export default {
 }
 </script>
 <style>
-ul.my-things > li {
-  margin: 2em;
-}
 .crust-group > div > div > label {
-  height: 22vh;
+  height: 200px;
+}
+.sauce-group > div > div > label {
+  height: 200px;
 }
 /*.ant-radio-button-wrapper {*/
 /*  height: 22vh;*/
